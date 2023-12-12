@@ -35,9 +35,17 @@ io.on('connection', (socket) => {
         currentResp = 0;
       }
     });
+
+    setTimeout(()=>{
+      console.log("HERE");
+      io.emit('testeDeServidor', {
+        msg: 'Test',
+        createdAt: new Date(),
+      });  
+    }, 10000)
   });
 
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 8080;
 
 server.listen(port, () => {
     console.log(port + ' Server Started');
